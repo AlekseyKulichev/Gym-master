@@ -1,3 +1,5 @@
+package ru.yandex.practicum;
+
 public class CounterOfTrainings {
     private final Coach coach;
     private int count;

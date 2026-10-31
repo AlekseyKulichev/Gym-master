@@ -1,3 +1,5 @@
+package ru.yandex.practicum;
+
 public class Group {
     private final String title;
     private final Age age;

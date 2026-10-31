@@ -1,3 +1,5 @@
+package ru.yandex.practicum;
+
 public class TimeOfDay implements Comparable<TimeOfDay> {
     private final int hours;
     private final int minutes;

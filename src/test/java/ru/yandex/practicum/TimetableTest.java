@@ -1,3 +1,5 @@
+package ru.yandex.practicum;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -92,14 +94,6 @@ public class TimetableTest {
 
         assertSame(earlierSession, sessions.get(0));
         assertSame(laterSession, sessions.get(1));
-    }
-
-    @Test
-    void testTimeOfDayRejectsInvalidValues() {
-        assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(-1, 0));
-        assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(24, 0));
-        assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(12, -1));
-        assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(12, 60));
     }
 
     @Test

@@ -1,3 +1,5 @@
+package ru.yandex.practicum;
+
 public class TrainingSession {
     private final Group group;
     private final Coach coach;

@@ -24,17 +24,20 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "25"
+          java-version: "21"
 
       - name: Compile and run tests
         run: |
           curl --fail --silent --show-error --location \
             https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/1.14.0/junit-platform-console-standalone-1.14.0.jar \
             --output junit-platform-console-standalone.jar
-          mkdir -p build/classes
-          javac -encoding UTF-8 -classpath junit-platform-console-standalone.jar \
-            -d build/classes src/*.java
+          mkdir -p build/classes/main build/classes/test
+          find src/main/java -name '*.java' -print0 | xargs -0 javac \
+            -encoding UTF-8 -d build/classes/main
+          find src/test/java -name '*.java' -print0 | xargs -0 javac \
+            -encoding UTF-8 -classpath "build/classes/main:junit-platform-console-standalone.jar" \
+            -d build/classes/test
           java -jar junit-platform-console-standalone.jar execute \
-            --class-path build/classes \
+            --class-path "build/classes/main:build/classes/test" \
             --scan-class-path \
             --fail-if-no-tests

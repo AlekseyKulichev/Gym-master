@@ -1,3 +1,5 @@
+package ru.yandex.practicum;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,13 +22,13 @@ public class Timetable {
                 trainingSession.getTimeOfDay(), "Время занятия не должно быть null");
 
         TreeMap<TimeOfDay, List<TrainingSession>> daySchedule =
-                timetable.computeIfAbsent(dayOfWeek, _ -> new TreeMap<>());
+                timetable.computeIfAbsent(dayOfWeek, ignored -> new TreeMap<>());
         List<TrainingSession> sessionsAtTime =
-                daySchedule.computeIfAbsent(timeOfDay, _ -> new ArrayList<>());
+                daySchedule.computeIfAbsent(timeOfDay, ignored -> new ArrayList<>());
         sessionsAtTime.add(trainingSession);
 
         List<TrainingSession> sessionsForDay =
-                sessionsByDay.computeIfAbsent(dayOfWeek, _ -> new ArrayList<>());
+                sessionsByDay.computeIfAbsent(dayOfWeek, ignored -> new ArrayList<>());
         int low = 0;
         int high = sessionsForDay.size();
         while (low < high) {
